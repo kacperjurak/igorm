@@ -20,14 +20,14 @@ In my opinion, it is always good to have additional options, in this case mock t
 
 First, create or change your existing functions to not use *gorm.DB but instead, use igorm.Gormw interface.
 
-```
+```go
 func getUser(db igorm.Gormw) *User {
 }
 ```
 
 From now on you are not forced to use a *gorm.DB instance, but you can use an instance of any structure that implements all methods from the Gormw interface. That structure is the wrapper available in this package. You can obtain it with Openw() function.
 
-```
+```go
 db, err := igorm.Openw(dialect, path)
 if err != nil {
     log.Fatal(err)
@@ -36,7 +36,7 @@ if err != nil {
 
 And now it's possible.
 
-```
+```go
 user := getUser(db)
 ```
 
@@ -46,7 +46,7 @@ Of course, for mock testing or for other purposes, you can create your own struc
 
 Gorm is ussually used as *gorm.DB (pointer to database instance). For interfaces use values. See explanation at this [link](https://medium.com/@agileseeker/go-interfaces-pointers-4d1d98d5c9c6)
 
-```
+```go
 // NOT
 
 func getUser(db *igorm.Gormw) *User {

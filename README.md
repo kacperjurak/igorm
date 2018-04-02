@@ -42,6 +42,12 @@ user := getUser(db)
 
 Of course, for mock testing or for other purposes, you can create your own structure implementing the Gormw interface (which has all its methods) and implement these methods depending on your needs. Then use it as an value to igorm.Gormw type arguements.
 
+### Wrapper template
+
+Creating your wrapper can be tiring because it has to implement 74 functions from the Gormw interface. That's why I did it for you.
+
+Look at [igorm-mock-template](https://github.com/kacperjurak/igorm-mock-template).
+
 ### Note about interfaces and pointers
 
 Gorm is ussually used as *gorm.DB (pointer to database instance). For interfaces use values. See explanation at this [link](https://medium.com/@agileseeker/go-interfaces-pointers-4d1d98d5c9c6)

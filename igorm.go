@@ -56,6 +56,7 @@ type Gormw interface {
 	Begin() Gormw
 	Commit() Gormw
 	Rollback() Gormw
+	RollbackUnlessCommitted() Gormw
 	NewRecord(value interface{}) bool
 	RecordNotFound() bool
 	CreateTable(values ...interface{}) Gormw
@@ -300,6 +301,10 @@ func (it *gormw) Commit() Gormw {
 
 func (it *gormw) Rollback() Gormw {
 	return Wrap(it.w.Rollback())
+}
+
+func (it *gormw) RollbackUnlessCommitted() Gormw {
+	return Wrap(it.w.RollbackUnlessCommitted())
 }
 
 func (it *gormw) NewRecord(value interface{}) bool {
